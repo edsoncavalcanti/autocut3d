@@ -3,14 +3,18 @@
 """The setup script."""
 
 from setuptools import setup, find_packages
-
+import os
 with open('README.rst') as readme_file:
     readme = readme_file.read()
 
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = [ ]
+HERE = os.path.abspath(os.path.dirname(__file__))
+setup_reqs = ['Cython', 'numpy']
+with open(os.path.join(HERE, 'requirements.txt')) as fp:
+    install_reqs = [r.rstrip() for r in fp.readlines()
+                    if not r.startswith('#') and not r.startswith('git+')]
 
 setup_requirements = ['pytest-runner', ]
 
@@ -32,7 +36,7 @@ setup(
         'Programming Language :: Python :: 3.8',
     ],
     description="a 3D segmentation algorithm based on cellular automata.",
-    install_requires=requirements,
+    install_requires=install_reqs,
     license="MIT license",
     long_description=readme + '\n\n' + history,
     include_package_data=True,
