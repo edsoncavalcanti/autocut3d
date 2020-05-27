@@ -12,7 +12,7 @@ with open('HISTORY.rst') as history_file:
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 setup_reqs = ['Cython', 'numpy']
-with open('requirements.txt') as fp:
+with open('requirements_dev.txt') as fp:
     install_reqs = [r.rstrip() for r in fp.readlines()
                     if not r.startswith('#') and not r.startswith('git+')]
 
